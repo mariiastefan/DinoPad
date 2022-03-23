@@ -110,5 +110,6 @@
         <Image Source="dino2.png" HorizontalAlignment="Left" Height="100" Margin="62,390,0,0" VerticalAlignment="Top" Width="100"/>
         <Image Source="dino.png" HorizontalAlignment="Left" Height="100" Margin="-10,225,0,0" VerticalAlignment="Top" Width="100"/>
         <Image Source="baby-toy.png" HorizontalAlignment="Left" Height="100" Margin="43.2,75,-20,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+        <Image Source="baby-toy.png" HorizontalAlignment="Left" Height="100" Margin="162,20,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

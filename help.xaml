@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tema1"
         mc:Ignorable="d"
-        Title="help" Height="350" Width="350" Background="PaleTurquoise" WindowStartupLocation="CenterScreen">
+        Title="help" Height="350" Width="350" Background="LightSeaGreen" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,3.6,0">
         <TextBlock HorizontalAlignment="Left" Margin="61,25,0,0" TextWrapping="Wrap" Text="Stefan Maria" VerticalAlignment="Top" Height="33" Width="147" FontSize="22" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="61,63,0,0" TextWrapping="Wrap" Text="grupa 303" VerticalAlignment="Top" Height="33" Width="147" FontSize="22" FontWeight="Bold"/>

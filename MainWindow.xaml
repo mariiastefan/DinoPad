@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:temanpd"
-        
+        Closing="Window_Closing"
         mc:Ignorable="d"
         Title="DINOPAD++" FontSize="16" FontFamily="Cambria" Background="White"  Icon="dinosaur.ico" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
     <Grid Margin="11,10,-1.4,0.4">
@@ -37,11 +37,14 @@
                 <MenuItem Header="About" Click="btnAbout_Click"></MenuItem>
             </MenuItem>
         </Menu>
-        <TabControl Grid.Row="1" Grid.Column="1" Name="MyTabControl" Margin="206,29,0,-0.6">
+        <TabControl Grid.Row="1" Grid.Column="1" Name="MyTabControl" Margin="5.2,0,0,-1">
+            <TabControl.BitmapEffect>
+                <DropShadowBitmapEffect Color="SpringGreen" Direction="600"/>
+            </TabControl.BitmapEffect>
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, Mode=OneWay}" />
+                        <TextBlock Text="{Binding Header, Mode=OneWay}" Foreground="{Binding Colour, UpdateSourceTrigger=PropertyChanged}" />
                         <Button Click="onClose_Click" Width="20" Padding="0" Margin="8 0 0 0" Content="X">
                             <Button.Style>
                                 <Style TargetType="Button" x:Name="CloseButtonStyle">
@@ -69,10 +72,11 @@
                                              AcceptsReturn="True" 
                                              Text="{Binding Path=Text,UpdateSourceTrigger=PropertyChanged}" 
                                              Background="White" 
-                                             VerticalAlignment="Stretch" 
-                                             HorizontalAlignment="Stretch" 
                                              BorderThickness="0" 
-                                             FontFamily="Cambria" >
+                                             FontFamily="Cambria" 
+                                             VerticalScrollBarVisibility="Visible"
+                                             ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                             >
                                     </TextBox>
                                 </StackPanel>
                             </ContentControl>
@@ -96,12 +100,9 @@
             </TabControl.ContentTemplate>
         </TabControl>
         <TreeView Grid.Row="1" Grid.Column="0" 
-                  x:Name="treeView" 
-                  HorizontalAlignment="Left" 
-                  Height="416"  Width="200" 
-                  Margin="10,34,0,0" VerticalAlignment="Top"  
+                  x:Name="treeView"   
                   TreeViewItem.Expanded="TreeViewItem_Expanded"  
-                  BorderThickness="1" >
+                  BorderThickness="1" Grid.ColumnSpan="2" Margin="0,0,627,0" >
         </TreeView>
   
     </Grid>

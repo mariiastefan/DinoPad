@@ -40,6 +40,16 @@ namespace temanpd
                 OnPropertyChanged();
             }
         }
+        string _Colour = "Green";
+        public string Colour
+        {
+            get => _Colour;
+            set
+            {
+                _Colour = value;
+                OnPropertyChanged();
+            }
+        }
         bool _IsPlaceholder = false;
         public bool IsPlaceholder
         {

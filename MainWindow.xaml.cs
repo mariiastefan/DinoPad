@@ -84,10 +84,11 @@ namespace temanpd
                 File.WriteAllText(saveFileDialog.FileName, Tabs[pos].Text);
                 Tabs[pos].Header = Path.GetFileName(saveFileDialog.FileName);
                 Tabs[pos].Path = saveFileDialog.FileName;
+                Tabs[pos].Colour = "Black";
             }
-            
-            
-            
+
+
+
         }
 
         private void btnSaveFile_Click(object sender, RoutedEventArgs e)
@@ -106,7 +107,7 @@ namespace temanpd
             var pos = MyTabControl.SelectedIndex;
             if (openFileDialog.ShowDialog() == true)
             {
-                Tabs[pos].Header= Path.GetFileName(openFileDialog.FileName);
+                Tabs[pos].Header = Path.GetFileName(openFileDialog.FileName);
                 Tabs[pos].Text = File.ReadAllText(openFileDialog.FileName);
                 Tabs[pos].Path = openFileDialog.FileName;
             }
@@ -116,7 +117,7 @@ namespace temanpd
             help win2 = new help();
             win2.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             win2.Show();
-           
+
         }
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
@@ -131,7 +132,7 @@ namespace temanpd
             var pos = MyTabControl.SelectedIndex;
 
         }
-
+        #region TreeView Implementation
         public void TreeViewItem_Expanded(object sender, RoutedEventArgs e)
         {
             TreeViewItem item = e.Source as TreeViewItem;
@@ -186,20 +187,25 @@ namespace temanpd
 
         private void AddTabFromTreeView(object sender, RoutedEventArgs e)
         {
-            TabItem newTab = new TabItem();
-            newTab.Header = ((TreeViewItem)sender).Header.ToString();
-            TextBox textBox = new TextBox();
-            textBox.AcceptsReturn = true;
-            textBox.AcceptsTab = true;
-            newTab.Content = textBox;
-            newTab.IsSelected = true;
-            MyTabControl.Items.Add(newTab);
-            newTab.Tag = (((TreeViewItem)sender).Tag as FileInfo).FullName;
-            textBox.Text = File.ReadAllText((((TreeViewItem)sender).Tag as FileInfo).FullName);
+            
+            var path = (((TreeViewItem)sender).Tag as FileInfo).FullName;
+            var tab = new TabVM()
+            {
+                Header = Path.GetFileName(path),
+                Text = File.ReadAllText(path),
+                Path = path,
+                Colour = "LightGreen"
+        };
+            Tabs.Add(tab);
         }
+        #endregion
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
-    
-  
+
+
 
 }
